@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+  <input type="number" ng-model = "nr"/>
+  <h1>{{nr}}^2 = {{raspuns}}</h1>
+  <button ng-click='calculatePow()'>Calculate</button>
+</div>
+
+<script>
+  var app = angular.module('myApp', []);
+
+  app.service('pow', function() {
+      this.myFunc = function (x) {
+          return x*x;
+      }
+  });
+
+  app.controller('myCtrl', function($scope, pow) {
+    $scope.calculatePow = function() {
+      $scope.raspuns = pow.myFunc($scope.nr);
+    }
+  });
+</script>
+
+</body>
+</html>

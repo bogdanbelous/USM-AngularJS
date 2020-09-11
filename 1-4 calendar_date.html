@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="datCtrl">
+
+  <p>Data 1 = {{ today | date : "MMMM d h:m"  }}</p>
+
+  <p>Data 2 = {{ today | date : "MMM dd h a" }}</p>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('datCtrl', function($scope) {
+    $scope.today = new Date();
+});
+</script>
+
+</body>
+</html>
