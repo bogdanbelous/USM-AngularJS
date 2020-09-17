@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <body>
+
+    <div ng-app="myApp" ng-controller="namesCtrl">
+      <p>Nume = <input type="text" ng-model="n" /></p>
+      <ul>
+        <li ng-repeat="x in students | filter: {name:n}">
+          {{x.name + " " + x.lastname + ", " + x.mark}}
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      var app = angular.module('myApp', [])
+      app.controller('namesCtrl', function($scope) {
+        $scope.students = [
+            {name: 'Jani', lastname: 'Popa', mark: 10},
+            {name: 'Ion', lastname: 'Micu', mark: 9},
+            {name: 'Victor', lastname: 'Mare', mark: 8},
+            {name: 'Petru', lastname: 'Lee', mark: 7},
+            {name: 'Hege', lastname: 'Branza', mark: 10},
+            {name: 'Joe', lastname: 'Apostol', mark: 9}
+          ];
+      });
+    </script>
+
+  </body>
+</html>

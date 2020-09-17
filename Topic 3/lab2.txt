@@ -1,0 +1,8 @@
+1. De creat lista studenților (nume, prenume, nota). De organizat căutarea studentului X. X de dat prin input
+2. serviciu ridică la pătrat valoarea X dată din input
+3. De creat un obiect select din lista studenților. De afișat alegerea utilizatorului
+4. De dat a și b din input. După click afișați produsul lor
+5. De dat a și b din input. Determinați dacă a se împarte la b fără rest
+6. de afișat lista studenților în formă de tabel
+7. aranjați descrescător lista studenților după nota
+Sarcinile de executat iar rezultatele sub formă de fișiere de trimis aici. Nu pe GITHUB

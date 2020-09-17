@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <body>
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+      <p>a= <input type="number" ng-model="a"></p>
+      <p>b= <input type="number" ng-model="b"></p>
+      <h1>{{a}}*{{b}} = {{raspuns}}</h1>
+      <button ng-click='multiply()'>Calculate</button>
+    </div>
+
+    <script>
+      var app = angular.module('myApp', []);
+
+      app.service('multiply', function() {
+          this.myFunc = function (x, y) {
+              return x*y;
+          }
+      });
+
+      app.controller('myCtrl', function($scope, multiply) {
+        $scope.multiply = function() {
+          $scope.raspuns = multiply.myFunc($scope.a, $scope.b);
+        }
+      });
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <body>
+
+    <div ng-app="">
+      <p>a= <input type="number" ng-model="a"></p>
+      <p>b= <input type="number" ng-model="b"></p>
+      <p ng-show="a === NaN || b === NaN">Introdu date</p>
+      <p ng-show="b === 0" >Nu pot imparti la zero</p>
+      <p ng-show="b !== 0 && b !== NaN">a/b = {{ a / b }}</p>
+    </div>
+
+    <!-- 
+    <div ng-app="">
+      <p>a= <input type="number" ng-model="a"></p>
+      <p>b= <input type="number" ng-model="b"></p>
+      <p ng-if="a === NaN || b === NaN">Introdu date</p>
+      <p ng-if="b === 0" >Nu pot imparti la zero</p>
+      <p ng-if="b !== 0 && b !== NaN">a/b = {{ a / b }}</p>
+    </div>
+    -->
+
+  </body>
+</html>

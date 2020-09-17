@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <body>
+
+    <div ng-app="" ng-init="numbers=[1,2,3,4,5,6,7,8,9]">
+      <p>a= <input type="number" ng-model="a"></p>
+
+      <p>Tabla inmultirii cu "ng-repeat"</p>
+      <ul>
+        <li ng-repeat="x in numbers">
+        {{a}} * {{x}} = {{ x*a }}
+        </li>
+      </ul>
+
+      <p>Tabla inmultirii fara "ng-repeat"</p>
+      <ul>
+        <li>{{a}} * {{numbers[0]}} = {{ numbers[0]*a }}</li>
+        <li>{{a}} * {{numbers[1]}} = {{ numbers[1]*a }}</li>
+        <li>{{a}} * {{numbers[2]}} = {{ numbers[2]*a }}</li>
+        <li>{{a}} * {{numbers[3]}} = {{ numbers[3]*a }}</li>
+        <li>{{a}} * {{numbers[4]}} = {{ numbers[4]*a }}</li>
+        <li>{{a}} * {{numbers[5]}} = {{ numbers[5]*a }}</li>
+        <li>{{a}} * {{numbers[6]}} = {{ numbers[6]*a }}</li>
+        <li>{{a}} * {{numbers[7]}} = {{ numbers[7]*a }}</li>
+        <li>{{a}} * {{numbers[8]}} = {{ numbers[8]*a }}</li>
+      </ul>
+
+    </div>
+
+  </body>
+</html>
