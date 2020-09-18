@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <body ng-app="">
+
+    <div>
+      <form>
+        <h2>Formular:</h2>
+        <p>Nume: <input type="text" ng-model="lastname" /></p>
+        <p>Prenume: <input type="text" ng-model="name" /></p>
+
+        
+        <p>Sex:
+          <input type="radio" ng-model="sex" value="male" />Masculin
+          <input type="radio" ng-model="sex" value="female" />Feminin
+        </p>
+
+        <p>Studii:
+          <select ng-model="studies">
+            <option value="">
+            <option value="middle">Medii
+            <option value="middle-special">Medii speciale
+            <option value="superior">Superioare
+            <option value="doctor">Doctorat
+            <option value="habilitat">Habilitat
+          </select>
+        </p>
+      </form>
+    </div>
+
+    <br/>
+
+    <div ng-if="lastname && name && sex && studies">
+      <h2>Date introduse:</h2>
+      <p>{{lastname}} {{name}}</p>
+
+      <p ng-if="sex == 'male'">Barbat</p>
+      <p ng-if="sex == 'female'">Femeie</p>
+
+      <p ng-if="studies == 'middle'">Studii - Medii</p>
+      <p ng-if="studies == 'middle-special'">Studii - Medii speciale</p>
+      <p ng-if="studies == 'superior'">Studii - Superioare</p>
+      <p ng-if="studies == 'doctor'">Studii - Doctorat</p>
+      <p ng-if="studies == 'habilitat'">Studii - Habilitat</p>
+
+      <h3 ng-if="studies == 'middle' || studies == 'middle-special'">Salariu = 5000 lei</h3>
+      <h3 ng-if="studies == 'superior'">Salariu = 10000 lei</h3>
+      <h3 ng-if="studies == 'doctor'">Salariu = 12000 lei</h3>
+      <h3 ng-if="studies == 'habilitat'">Salariu = 15000 lei</h3>
+    </div>
+
+  </body>
+</html>
