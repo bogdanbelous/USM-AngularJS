@@ -5,4 +5,3 @@
 5. De dat a și b din input. Determinați dacă a se împarte la b fără rest
 6. de afișat lista studenților în formă de tabel
 7. aranjați descrescător lista studenților după nota
-Sarcinile de executat iar rezultatele sub formă de fișiere de trimis aici. Nu pe GITHUB
