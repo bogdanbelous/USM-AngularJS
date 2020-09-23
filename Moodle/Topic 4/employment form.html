@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <body ng-app="myApp" ng-controller="formCtrl">
+
+    <div>
+      <form>
+        <h2>Formularul angajerii</h2>
+        <p>Nume: <input type="text" ng-model="lastname" /></p>
+        <p>Prenume: <input type="text" ng-model="name" /></p>
+        <p>Data nasterii: <input type="date" ng-model="birthday" /></p>
+
+        <p>Facultatea:</p>
+        <input type="radio" name="faculty" ng-model="faculty" value="Chimie"/><label>Chimie</label><br />
+        <input type="radio" name="faculty" ng-model="faculty" value="Biologia"/><label>Biologia</label><br />
+        <input type="radio" name="faculty" ng-model="faculty" value="Matematica"/><label>Matematica</label><br />
+        <input type="radio" name="faculty" ng-model="faculty" value="Informatica"/><label>Informatica</label><br />
+
+        <p>Obiectul predarii
+          <select ng-model="object">
+            <option value="">
+            <option value="Chimia organica">Chimia organica
+            <option value="Biologia umana">Biologia umana
+            <option value="Matematica economica">Matematica economica
+            <option value="Algebra">Algebra
+            <option value="Arhitictura calculatorului">Arhitictura calculatorului
+            <option value="Fundamentele programarii">Fundamentele programarii
+          </select>
+        </p>
+
+        <p>Salariu asteptat (lei):<input type="number" name="salary" ng-model="salary" ng-change="checkSalary()" /><span>{{salaryMessage}}</span></p>
+
+        <input type="submit" value="Confirma" ng-click="submit()" ng-disabled="notAllowSubmit">
+        <input type="reset" value="Anuleaza" ng-click="reset()">
+      </form>
+    </div>
+
+    <br/>
+
+    <div ng-show="showResult">
+      <h2>Date introduse:</h2>
+      <p>Nume: {{result.lastname}} {{result.name}}</p>
+      <p>Ziua de nastere: {{result.birthday | date : "longDate"}}</p>
+      <p>Facultatea: {{result.faculty}}</p>
+      <p>Obiectul predarii: {{result.object}}</p>
+      <p>Salariu: {{result.salary}} lei</p>
+    </div>
+
+    <script>
+      var app = angular.module('myApp', []);
+      app.controller('formCtrl', function($scope) {
+        $scope.result = {lastname: '', name: '', birthday: '', faculty: '', object: '', salary: 0};
+        $scope.notAllowSubmit = true;
+        $scope.showResult = false;
+    
+        $scope.checkSalary = function() {
+          if ($scope.salary < 3000) {
+            $scope.salaryMessage = "Va subestimati!";
+            $scope.notAllowSubmit = true;
+          }
+
+          if ($scope.salary > 5000) {
+            $scope.salaryMessage = "Exagerat!";
+            $scope.notAllowSubmit = true;
+          }
+
+          if ($scope.salary >= 3000 && $scope.salary <= 5000) {
+            $scope.salaryMessage = "";
+            $scope.notAllowSubmit = false;
+          }
+        };
+    
+        $scope.submit = function() {
+          $scope.showResult = true;
+          $scope.result.lastname = $scope.lastname;
+          $scope.result.name = $scope.name;
+          $scope.result.birthday = $scope.birthday;
+          $scope.result.faculty = $scope.faculty;
+          $scope.result.object = $scope.object;
+          $scope.result.salary = $scope.salary;
+        };
+
+        $scope.reset = function() {
+          $scope.result = {lastname: '', name: '', birthday: '', faculty: '', object: '', salary: 0};
+          $scope.notAllowSubmit = true;
+          $scope.showResult = false;
+        }
+      });
+    </script>
+
+  </body>
+</html>
