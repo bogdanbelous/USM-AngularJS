@@ -1,0 +1,29 @@
+<div class="container col-md-3 py-5">
+  <form name="registerForm" method="post" autocomplete="off" ng-submit="addUser(userInput)">
+    <h3 class="text-center mb-5">Inregistrare</h3>
+    <div class="form-group">
+      <input type="email" name="userEmail" class="form-control" placeholder="Email" ng-model="userInput.email" required>
+      <div class="text-danger" ng-show="registerForm.userEmail.$error.email">
+        <p>Email trebuie sa fie valid</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="password" name="userPassword" class="form-control" placeholder="Parola" ng-model="userInput.password" ng-minlength="6" ng-maxlength="20" required>
+      <div class="text-danger" ng-if="registerForm.userPassword.$error.minlength || registerForm.userPassword.$error.maxlength">
+        <p>Parola trebuie sa aiba 6-20 de simboluri</p>
+      </div>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary" ng-disabled="registerForm.$invalid">Inregistreaza</button>
+      <button type="reset" class="btn btn-primary">Sterge</button>
+    </div>
+    <div ng-show="userIsAdded">
+      <p class="text-success text-center mt-2">Ati fost inregistrati cu succes!</p>
+    </div>
+  </form>
+  <div>
+    <p class="text-center mt-2">Deja aveti cont?
+      <a href="#" ng-click="toPage('login.html')">Autentificare</a>
+    </p>
+  </div>
+</div>
