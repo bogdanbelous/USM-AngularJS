@@ -15,6 +15,10 @@
     <button type="button" class="btn btn-outline-info" ng-click="filt='Comedie'">Comedie</button>
     <button type="button" class="btn btn-outline-info" ng-click="filt='Desen animat'">Desen animat</button>
   </div>
+  <div class="text-center mt-3">
+    <span>Numar de rezultate:</span>
+    <input type="number" class="form-control w-25 d-inline" placeholder="Toate" min="1" max="20" ng-model="nrToDisplay"/>
+  </div>
 
   <p class="text-center mt-4 h5" ng-show="order == undefinde && filt == undefinde">Toate filme</p>
   <p class="text-center mt-4 h5" ng-show="order != undefinde || filt != undefinde">
@@ -24,7 +28,7 @@
   </p>
 
   <div class="row">
-    <div class="col-6 col-md-3 my-4 d-flex align-items-stretch" ng-repeat="movie in movies | orderBy:[order, order1] | filter:filt ">
+    <div class="col-6 col-md-3 my-4 d-flex align-items-stretch" ng-repeat="movie in movies | orderBy:[order, order1] | filter:filt | limitTo:nrToDisplay">
       <div class="card">
         <img src={{movie.image}} class="card-img-top" alt="">
         <div class="card-body">
