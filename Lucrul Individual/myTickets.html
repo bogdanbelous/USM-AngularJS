@@ -1,0 +1,15 @@
+<h1 class="text-center">Bilete mele</h1>
+<nr-own-tickets class="text-center"></nr-own-tickets>
+<div class="row">
+  <div class="col-6 col-md-3 my-4 d-flex align-items-stretch" ng-repeat="ticket in registeredUsers[loggedUserId].tickets">
+    <div ng-repeat="movie in movies">
+      <div class="card" ng-if="movie.name == ticket">
+        <img src={{movie.image}} class="card-img-top" alt="">
+        <div class="card-body">
+          <h5 class="card-title">{{movie.name}}</h5>
+          <button class="btn btn-danger mt-3">Intoarce bilet</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

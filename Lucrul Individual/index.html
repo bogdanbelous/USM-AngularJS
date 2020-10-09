@@ -18,9 +18,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link" href="#" ng-click="activePage='about.html'">Despre noi</a>
-            <a class="nav-item nav-link" href="#" ng-click="activePage='contact.html'">Contacte</a>
+            <a class="nav-item nav-link" href="#" ng-click="activePage='register.html'" ng-show="!isLoggedIn">Inregistare</a>
             <a class="nav-item nav-link" href="#" ng-click="activePage='login.html'" ng-show="!isLoggedIn">Login</a>
+            <a class="nav-item nav-link" href="#" ng-click="activePage='myTickets.html'" ng-show="isLoggedIn">Bilete mele</a>
             <a class="nav-item nav-link" href="#" ng-click="logout()" ng-show="isLoggedIn">Iesirea</a>
           </div>
         </div>
@@ -30,21 +30,27 @@
     <div class="container py-5">
       <div ng-include="activePage"></div>
 
-
-      <pre>userInput = {{userInput | json}}</pre>
-      <pre>registeredUser = {{registeredUser | json}}</pre>
+      <pre>registeredUsers = {{registeredUsers | json}}</pre>
+      <!-- <pre>userInput = {{userInput | json}}</pre>
       <pre>access = {{isLoggedIn}}</pre>
-      <pre>nr users ={{nrOfRegisteredUser}}</pre>
-      <pre>page={{activePage}}</pre>
-      <pre></pre>
+      <pre>nr users ={{nrOfUsers}}</pre>
+      <pre>page={{activePage}}</pre> -->
 
 
     </div>
 
     <footer class="page-footer mt-auto bg-light">
-      <div class="container text-center py-3">
-          <p class="m-0">Belous Bogdan IA1801</p>
-          <p class="m-0">©Copyright 2020</p>
+      <div class="container">
+        <div class="row">
+          <div class=" text-left py-3 col">
+            <p class="m-0">Ora curenta - {{currentTime}}</p>
+            <p class="m-0" ng-non-bindable>{{1 + 1}}</p>
+          </div>
+          <div class=" text-right py-3 col">
+              <p class="m-0">Belous Bogdan IA1801</p>
+              <p class="m-0">©Copyright 2020</p>
+          </div>
+        </div>
       </div>
     </footer>
 

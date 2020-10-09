@@ -1,6 +1,5 @@
-<h1 class="text-center">Filme</h1>
 <div class="container">
-  <div class="text-center mt-5">
+  <div class="text-center">
     <span class="">Aranjare:</span>
     <button type="button" class="btn btn-outline-info" ng-click="order=undefinde">Standart</button>
     <button type="button" class="btn btn-outline-info" ng-click="order='-year'; order1='-month'; orderName='Cele mai noi'">Cele mai noi</button>
@@ -15,9 +14,9 @@
     <button type="button" class="btn btn-outline-info" ng-click="filt='Comedie'">Comedie</button>
     <button type="button" class="btn btn-outline-info" ng-click="filt='Desen animat'">Desen animat</button>
   </div>
-  <div class="text-center mt-3">
-    <span>Numar de rezultate:</span>
-    <input type="number" class="form-control w-25 d-inline" placeholder="Toate" min="1" max="20" ng-model="nrToDisplay"/>
+  <div class="form-inline justify-content-center mt-3">
+    <label>Numar de rezultate:</label>
+    <input type="number" class="form-control ml-2" placeholder="Toate" min="1" max="20" ng-model="nrToDisplay"/>
   </div>
 
   <p class="text-center mt-4 h5" ng-show="order == undefinde && filt == undefinde">Toate filme</p>
@@ -33,9 +32,39 @@
         <img src={{movie.image}} class="card-img-top" alt="">
         <div class="card-body">
           <h5 class="card-title">{{movie.name}}</h5>
-            <p class="my-1">Premiera: {{movie.month}}/{{movie.year}}</p>
-            <p class="my-1">Gen: {{movie.genre}}</p>
-            <button class="btn btn-info mt-3">Cumpara bilet</button>
+          <p class="my-1">Premiera: {{movie.month}}/{{movie.year}}</p>
+          <p class="my-1">Gen: {{movie.genre}}</p>
+          <button class="btn btn-info mt-3" data-toggle="modal" data-target="#buy{{$index}}">Cumpara bilet</button>
+          <!-- Modal -->
+          <div class="modal fade" id="buy{{$index}}" tabindex="-1" role="dialog" aria-labelledby="buyModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="buyModalLongTitle">Cumpara bilet</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form>
+                  <div class="modal-body">
+                    <h3 class="mb-4">{{movie.name}}</h3>
+                    <p class="my-1">Gen: {{movie.genre}}</p>
+                    <div class="form-inline">
+                      <label class="mr-2">Data</label>
+                      <select class="form-control">
+                        <option ng-repeat="date in movie.show">{{date}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Inchide</button>
+                    <button type="submit" class="btn btn-info" data-dismiss="modal" ng-show="isLoggedIn" ng-click="addTicket(movie.name)">Cumpara</button>
+                  </div>
+                  <p class="text-danger text-center" ng-disable="isLoggedIn">Trebuie sa fiti logati</p>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
