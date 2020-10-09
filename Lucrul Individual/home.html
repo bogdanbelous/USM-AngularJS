@@ -1,1 +1,40 @@
-<h1 class="text-center">Filme noi</h1>
+<h1 class="text-center">Filme</h1>
+<div class="container">
+  <div class="text-center mt-5">
+    <span class="">Aranjare:</span>
+    <button type="button" class="btn btn-outline-info" ng-click="order=undefinde">Standart</button>
+    <button type="button" class="btn btn-outline-info" ng-click="order='-year'; order1='-month'; orderName='Cele mai noi'">Cele mai noi</button>
+    <button type="button" class="btn btn-outline-info" ng-click="order='year'; order1='month'; orderName='Cele mai vechi'">Cele mai vechi</button>
+    <button type="button" class="btn btn-outline-info" ng-click="order='name'; order1=undefinde; orderName='Dupa nume'">Dupa nume</button>
+  </div>
+  <div class="text-center mt-3">
+    <span>Filtru:</span>
+    <button type="button" class="btn btn-outline-info" ng-click="filt=undefinde">Fara filtru</button>
+    <button type="button" class="btn btn-outline-info" ng-click="filt='Actiune'">Actiune</button>
+    <button type="button" class="btn btn-outline-info" ng-click="filt='Drama'">Drama</button>
+    <button type="button" class="btn btn-outline-info" ng-click="filt='Comedie'">Comedie</button>
+    <button type="button" class="btn btn-outline-info" ng-click="filt='Desen animat'">Desen animat</button>
+  </div>
+
+  <p class="text-center mt-4 h5" ng-show="order == undefinde && filt == undefinde">Toate filme</p>
+  <p class="text-center mt-4 h5" ng-show="order != undefinde || filt != undefinde">
+    <span ng-show="order != undefinde">{{orderName}}</span>
+    <span ng-show="order != undefinde && filt != undefinde">|</span>
+    <span ng-show="filt != undefinde">{{filt}}</span>
+  </p>
+
+  <div class="row">
+    <div class="col-6 col-md-3 my-4 d-flex align-items-stretch" ng-repeat="movie in movies | orderBy:[order, order1] | filter:filt ">
+      <div class="card">
+        <img src={{movie.image}} class="card-img-top" alt="">
+        <div class="card-body">
+          <h5 class="card-title">{{movie.name}}</h5>
+            <p class="my-1">Premiera: {{movie.month}}/{{movie.year}}</p>
+            <p class="my-1">Gen: {{movie.genre}}</p>
+            <button class="btn btn-info mt-3">Cumpara bilet</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
