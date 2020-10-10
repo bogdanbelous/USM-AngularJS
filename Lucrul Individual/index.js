@@ -8,13 +8,13 @@ app.directive("nrOwnTickets", function() {
 });
 
 // serviciu propriu
-app.service('sum', function() {
-  this.nrMyTickets = function (x) {
+app.service('myService', function() {
+  this.nrOfMovies = function (x) {
     return x.length;
   }
 });
 
-app.controller("appCtrl", function($scope, $interval, sum) {
+app.controller("appCtrl", function($scope, $interval, myService) {
   $scope.movies = [
     {
       name: "Tenet",
@@ -87,9 +87,9 @@ app.controller("appCtrl", function($scope, $interval, sum) {
   $scope.registeredUsers = [
   {
     "userId": 0,
-    "email": "2@2",
-    "password": "2@22@2",
-    "tickets": ["Tenet", "Soul"],
+    "email": "admin@a.com",
+    "password": "123456",
+    "tickets": ["Soul", "Greyhound", "Tenet"],
   }];
   nrOfUsers = $scope.registeredUsers.length;
 
@@ -134,6 +134,13 @@ app.controller("appCtrl", function($scope, $interval, sum) {
     $scope.registeredUsers[$scope.loggedUserId].tickets.push(ticket);
     $scope.activePage= "myTickets.html";
   }
+
+  $scope.removeTicket = function(index) {
+    $scope.registeredUsers[$scope.loggedUserId].tickets.splice(index, 1);
+  }
+
+  $scope.nrOfAllMovies = myService.nrOfMovies($scope.movies);
+  $scope.onePlusOne = "?";
 
   currentTime = new Date().toLocaleTimeString('uk-UK');
   $interval(function () {

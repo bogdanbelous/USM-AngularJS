@@ -49,18 +49,20 @@
                   <div class="modal-body">
                     <h3 class="mb-4">{{movie.name}}</h3>
                     <p class="my-1">Gen: {{movie.genre}}</p>
-                    <div class="form-inline">
+                    <div class="form-inline mb-2">
                       <label class="mr-2">Data</label>
                       <select class="form-control">
                         <option ng-repeat="date in movie.show">{{date}}</option>
                       </select>
                     </div>
+                    <input type="checkbox" ng-model="allowBuy">
+                    <label>Sunt de acord cu termenii si conditiile</label>
                   </div>
                   <div class="modal-footer justify-content-center">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Inchide</button>
-                    <button type="submit" class="btn btn-info" data-dismiss="modal" ng-show="isLoggedIn" ng-click="addTicket(movie.name)">Cumpara</button>
+                    <button type="submit" class="btn btn-info" data-dismiss="modal" ng-show="isLoggedIn" ng-disabled="!allowBuy" ng-click="addTicket(movie.name)">Cumpara</button>
                   </div>
-                  <p class="text-danger text-center" ng-disable="isLoggedIn">Trebuie sa fiti logati</p>
+                  <p class="text-danger text-center" ng-show="!isLoggedIn">Trebuie sa fiti logati</p>
                 </form>
               </div>
             </div>
@@ -70,4 +72,3 @@
     </div>
   </div>
 </div>
-
